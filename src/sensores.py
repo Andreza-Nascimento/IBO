@@ -70,7 +70,7 @@ if __name__ == '__main__':
                 #client.publish('v1/db5a8060-3e2b-11ec-8da3-474359af83d7/things/c269e860-5ef2-11ec-8da3-474359af83d7/data/0', ambiente.temperature)
                 print("Umidade: %-3.1f %%" % ambiente.humidity)
                 #client.publish('v1/db5a8060-3e2b-11ec-8da3-474359af83d7/things/c269e860-5ef2-11ec-8da3-474359af83d7/data/1', ambiente.humidity)
-                print("SENSOR SOLO: " + "{:>5}%\t{:>5.3f}".format(percent_translation(canal.value), canal.voltage))
+                print("Sensor Solo: " + "{:>5}%\t{:>5.3f}/n".format(percent_translation(canal.value), canal.voltage))
         except Exception as error:
             raise error
         except KeyboardInterrupt:
