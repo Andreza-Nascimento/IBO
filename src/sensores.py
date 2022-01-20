@@ -66,11 +66,11 @@ if __name__ == '__main__':
             print("SENSOR SOLO: " + "{:>5}%\t{:>5.3f}".format(percent_translation(canal.value), canal.voltage))
             #client.publish('v1/db5a8060-3e2b-11ec-8da3-474359af83d7/things/efbe8170-5ef9-11ec-9f5b-45181495093e/data/0', percent_translation(canal.value))
             if ambiente.is_valid():
-			    print("Ultima leitura valida: " + str(datetime.datetime.now()))
-			    print("Temperatura: %-3.1f C" % ambiente.temperature)
-			    #client.publish('v1/db5a8060-3e2b-11ec-8da3-474359af83d7/things/c269e860-5ef2-11ec-8da3-474359af83d7/data/0', ambiente.temperature)
-			    print("Umidade: %-3.1f %%" % ambiente.humidity)
-			    #client.publish('v1/db5a8060-3e2b-11ec-8da3-474359af83d7/things/c269e860-5ef2-11ec-8da3-474359af83d7/data/1', ambiente.humidity)
+                print("Ultima leitura valida: " + str(datetime.datetime.now()))
+                print("Temperatura: %-3.1f C" % ambiente.temperature)
+                #client.publish('v1/db5a8060-3e2b-11ec-8da3-474359af83d7/things/c269e860-5ef2-11ec-8da3-474359af83d7/data/0', ambiente.temperature)
+                print("Umidade: %-3.1f %%" % ambiente.humidity)
+                #client.publish('v1/db5a8060-3e2b-11ec-8da3-474359af83d7/things/c269e860-5ef2-11ec-8da3-474359af83d7/data/1', ambiente.humidity)
         except Exception as error:
             raise error
         except KeyboardInterrupt:
