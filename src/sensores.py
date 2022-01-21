@@ -65,12 +65,12 @@ if __name__ == '__main__':
             if ambiente.is_valid():
                 print("Ultima leitura valida: " + str(datetime.datetime.now()))
                 print("Temperatura: %-3.1f C" % ambiente.temperature)
-                client.publish('v1/user/things/client_id/data/0', ambiente.temperature)
+                #client.publish('v1/user/things/client_id/data/0', ambiente.temperature)
                 print("Umidade: %-3.1f %%" % ambiente.humidity)
-                client.publish('v1/user/things/client_id/data/1', ambiente.humidity)
+                #client.publish('v1/user/things/client_id/data/1', ambiente.humidity)
                 print("----------  {:>5}\t{:>5}".format("Saturacao", "Voltagem"))
                 print("Sensor Solo: " + "{:>5}%\t{:>5.3f}\n".format(percent_translation(canal.value), canal.voltage))
-                client.publish('v1/user/things/client_id/data/2', percent_translation(canal.value))
+                #client.publish('v1/user/things/client_id/data/2', percent_translation(canal.value))
         except Exception as error:
             raise error
         except KeyboardInterrupt:
