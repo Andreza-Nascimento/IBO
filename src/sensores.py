@@ -77,4 +77,4 @@ if __name__ == '__main__':
             print('Saindo do script')
             print("Cleanup")
             GPIO.cleanup()
-        time.sleep(1)
+        time.sleep(3)
