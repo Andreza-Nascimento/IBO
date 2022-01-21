@@ -18,15 +18,15 @@ import dht11
 import datetime
 
 #Configuração protocolo de comunicação
-#user = 'db5a8060-3e2b-11ec-8da3-474359af83d7'
-#password = 'f56e60c61d27ffb784d9a78e776c19e695314deb'
-#client_id = 'efbe8170-5ef9-11ec-9f5b-45181495093e'
-#server = 'mqtt.mydevices.com'
-#port = 1883
+user = 'db5a8060-3e2b-11ec-8da3-474359af83d7'
+password = 'f56e60c61d27ffb784d9a78e776c19e695314deb'
+client_id = '8a3d3e70-7a4e-11ec-a681-73c9540e1265'
+server = 'mqtt.mydevices.com'
+port = 1883
 
-#client = mqtt.Client(client_id)
-#client.username_pw_set(user,password)
-#client.connect(server,port)
+client = mqtt.Client(client_id)
+client.username_pw_set(user,password)
+client.connect(server,port)
 
 # Cria spi bus
 spi = busio.SPI(clock=board.SCK, MISO=board.MISO, MOSI=board.MOSI)
@@ -62,15 +62,15 @@ if __name__ == '__main__':
     while True:
         ambiente = dados.read()
         try:
-            #client.publish('v1/db5a8060-3e2b-11ec-8da3-474359af83d7/things/efbe8170-5ef9-11ec-9f5b-45181495093e/data/0', percent_translation(canal.value))
             if ambiente.is_valid():
                 print("Ultima leitura valida: " + str(datetime.datetime.now()))
                 print("Temperatura: %-3.1f C" % ambiente.temperature)
-                #client.publish('v1/db5a8060-3e2b-11ec-8da3-474359af83d7/things/c269e860-5ef2-11ec-8da3-474359af83d7/data/0', ambiente.temperature)
+                client.publish('v1/user/things/client_id/data/0', ambiente.temperature)
                 print("Umidade: %-3.1f %%" % ambiente.humidity)
-                #client.publish('v1/db5a8060-3e2b-11ec-8da3-474359af83d7/things/c269e860-5ef2-11ec-8da3-474359af83d7/data/1', ambiente.humidity)
+                client.publish('v1/user/things/client_id/data/1', ambiente.humidity)
                 print("----------  {:>5}\t{:>5}".format("Saturacao", "Voltagem"))
                 print("Sensor Solo: " + "{:>5}%\t{:>5.3f}\n".format(percent_translation(canal.value), canal.voltage))
+                client.publish('v1/user/things/client_id/data/2', percent_translation(canal.value))
         except Exception as error:
             raise error
         except KeyboardInterrupt:
