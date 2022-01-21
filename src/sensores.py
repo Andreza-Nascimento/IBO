@@ -65,7 +65,7 @@ if __name__ == '__main__':
             if ambiente.is_valid():
                 print("Ultima leitura valida: " + str(datetime.datetime.now()))
                 print("Temperatura: %-3.1f C" % ambiente.temperature)
-                #client.publish('v1/user/things/client_id/data/0', ambiente.temperature)
+                client.publish('v1/user/things/client_id/data/0', ambiente.temperature)
                 print("Umidade: %-3.1f %%" % ambiente.humidity)
                 #client.publish('v1/user/things/client_id/data/1', ambiente.humidity)
                 print("----------  {:>5}\t{:>5}".format("Saturacao", "Voltagem"))
