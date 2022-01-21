@@ -59,13 +59,13 @@ def percent_translation(raw_val):
 
 # Print do título da coluna
 if __name__ == '__main__':
-    i=0
+    #i=0
     while True:
         ambiente = dados.read()
         try:
             if ambiente.is_valid():
-                i+=1
-                ambiente.temperature += i
+                #i+=1
+                #ambiente.temperature += i
                 print("Ultima leitura valida: " + str(datetime.datetime.now()))
                 print("Temperatura: %-3.1f C" % ambiente.temperature)
                 client.publish('v1/db5a8060-3e2b-11ec-8da3-474359af83d7/things/8a3d3e70-7a4e-11ec-a681-73c9540e1265/data/0', ambiente.temperature)
