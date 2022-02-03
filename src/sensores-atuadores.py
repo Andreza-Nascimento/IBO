@@ -34,6 +34,7 @@ def ativarBomba(client,userdata,msg):
     p = msg.payload.decode().split(",")
     if p[1]=='1':
         client.publish(publish_bomba,1)
+        GPIO.output(30, GPIO.HIGH)
     else:
         client.publish(publish_bomba,0)
 
@@ -59,6 +60,7 @@ canal = AnalogIn(mcp, MCP.P0)
 # inicializando GPIO
 GPIO.setwarnings(True)
 GPIO.setmode(GPIO.BCM)
+GPIO.setup(17, GPIO.OUT)
 
 # lendo informações do pino GPIO 27
 dados = dht11.DHT11(pin = 27)
