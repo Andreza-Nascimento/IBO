@@ -32,7 +32,9 @@ publish_bomba = "v1/"+str(user)+"/things/"+str(client_id)+"/data/17"
 def ativarBomba(client,userdata,msg):
     m = msg.topic.split("/")
     p = msg.payload.decode().split("/")
-    #client.publish(publish_bomba,p[1])
+    print(p)
+    print(m)
+    client.publish(publish_bomba,p[1])
     if p[1]=='1':
         print(1)
     else:
@@ -44,4 +46,8 @@ client.connect(server,port)
 client.on_message = ativarBomba
 client.subscribe(subscribe_bomba)
 client.loop_start()
+
+while True:
+    print("teste")
+    time.sleep(2)
 
