@@ -31,7 +31,7 @@ publish_bomba = "v1/"+str(user)+"/things/"+str(client_id)+"/data/17"
 #Função para o atuador (Bomba)
 def ativarBomba(client,userdata,msg):
     m = msg.topic.split("/")
-    p = msg.payload.decode().split("/")
+    p = msg.payload.decode().split(",")
     print(p)
     print(m)
     client.publish(publish_bomba,p[1])
