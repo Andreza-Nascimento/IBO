@@ -37,6 +37,7 @@ def ativarBomba(client,userdata,msg):
         GPIO.output(17, GPIO.HIGH)
     else:
         client.publish(publish_bomba,0)
+        GPIO.output(17, GPIO.LOW)
 
 client = mqtt.Client(client_id)
 client.username_pw_set(user,password)
