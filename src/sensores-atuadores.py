@@ -34,7 +34,7 @@ def ativarBomba(client,userdata,msg):
     p = msg.payload.decode().split(",")
     if p[1]=='1':
         client.publish(publish_bomba,1)
-        GPIO.output(30, GPIO.HIGH)
+        GPIO.output(17, GPIO.HIGH)
     else:
         client.publish(publish_bomba,0)
 
