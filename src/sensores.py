@@ -24,9 +24,26 @@ client_id = '8a3d3e70-7a4e-11ec-a681-73c9540e1265'
 server = 'mqtt.mydevices.com'
 port = 1883
 
+#Configuração para receber e publicar informação da Cayenne
+subscribe_bomba = "v1/"+str(user)+"/things/"+str(client_id)+"/cmd/17"
+publish_bomba = "v1/"+str(user)+"/things/"+str(client_id)+"/data/17"
+
+#Função para o atuador (Bomba)
+def ativarBomba(client,userdata,msg):
+    m = msg.topic.split("/")
+    p = msg.payload.decode().split("/")
+    #client.publish(publish_bomba,p[1])
+    if p[1]=='1':
+        print(1)
+    else:
+        print(2)
+
 client = mqtt.Client(client_id)
 client.username_pw_set(user,password)
 client.connect(server,port)
+client.on_message = ativarBomba
+client.subscribe(subscribe_bomba)
+client.loop_start()
 
 # Cria spi bus
 spi = busio.SPI(clock=board.SCK, MISO=board.MISO, MOSI=board.MOSI)
