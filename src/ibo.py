@@ -18,6 +18,9 @@ import dht11
 import datetime
 import os
 
+print("será")
+time.sleep(60)
+
 #Configuração protocolo de comunicação
 user = 'db5a8060-3e2b-11ec-8da3-474359af83d7'
 password = 'f56e60c61d27ffb784d9a78e776c19e695314deb'
@@ -34,6 +37,8 @@ subscribe_cooler = "v1/"+str(user)+"/things/"+str(client_id)+"/cmd/23"
 subscribe_reboot = "v1/"+str(user)+"/things/"+str(client_id)+"/cmd/15"
 
 publish_cooler = "v1/"+str(user)+"/things/"+str(client_id)+"/data/23"
+
+publish_sinalfalho = "v1/"+str(user)+"/things/"+str(client_id)+"/data/33"
 
 #Função para os atuadores
 def atuadores(client,userdata,msg):
@@ -100,12 +105,12 @@ def percent_translation(raw_val):
 
 # Print do título da coluna
 if __name__ == '__main__':
-    #i=0
+    qtdFalha = 0
     while True:
         ambiente = dados.read()
         try:
             if ambiente.is_valid():
-                #i+=1
+                qtdFalha = 0
                 #ambiente.temperature += i
                 print("Ultima leitura valida: " + str(datetime.datetime.now()))
                 print("Temperatura: %-3.1f C" % ambiente.temperature)
@@ -115,10 +120,19 @@ if __name__ == '__main__':
                 print("----------  {:>5}\t{:>5}".format("Saturacao", "Voltagem"))
                 print("Sensor Solo: " + "{:>5}%\t{:>5.3f}\n".format(percent_translation(canal.value), canal.voltage))
                 client.publish('v1/db5a8060-3e2b-11ec-8da3-474359af83d7/things/8a3d3e70-7a4e-11ec-a681-73c9540e1265/data/2', percent_translation(canal.value))
+                client.publish(publish_sinalfalho,0)
+            else:
+                qtdFalha+=1
+                print("Error: %d" % ambiente.error_code)
+                print("Qtd Erros: %d" % qtdFalha)
+                if qtdFalha > 60:
+                    client.publish(publish_sinalfalho,1)
+                    GPIO.output(23, GPIO.LOW)
+                    GPIO.output(17, GPIO.LOW)
         except Exception as error:
             raise error
         except KeyboardInterrupt:
             print('Saindo do script')
             print("Cleanup")
             GPIO.cleanup()
-        time.sleep(10)
+        time.sleep(2)
