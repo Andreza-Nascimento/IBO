@@ -42,7 +42,7 @@ def atuadores(client,userdata,msg):
         else:
             client.publish(publish_bomba,0)
             GPIO.output(17, GPIO.HIGH)
-    if m[-1]=='23': cooler
+    if m[-1]=='23': #cooler
         if p[1]=='1':
             client.publish(publish_cooler,1)
             GPIO.output(23, GPIO.LOW)
