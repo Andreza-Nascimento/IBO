@@ -1,6 +1,6 @@
 # IBO - I'LL BE OKAY
 
-> This repository contains a collection of assignments completed for the *System Identification and Parameter Estimation* (TIP7044) course at the Federal University of Ceará during my Master's degree. 
+> This repository contains a project developed for the *Internet of Things* (TI0162) course at the Federal University of Ceará during my Bachelor's degree. 
 
 ## Application Description 💻
 
