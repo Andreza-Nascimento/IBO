@@ -43,13 +43,19 @@ Development of an IoT-based crop management tool enabling efficient remote plant
 For the project in question, two sensors were used: **DHT11** and a **Capacitive Soil Moisture Sensor Module**.
 
 - **DHT11** - Sensor used to measure air temperature and humidity. It has an accuracy of +- 2°C and +- 5.0%. Furthermore, it is a sensor recommended for systems where temperature and humidity variations are, respectively, in the ranges of 0 to 50°C and 20 to 90%.
+ 
   ![Air humidity and temperature sensor](Figures/DHT11.png)
+  
 - **Capacitive Soil Moisture Sensor Module** - As the name suggests, the sensor is used to measure soil moisture variation. It offers a longer lifespan and resistance to corrosion compared to resistive models.
+
   ![Capacitive Soil Moisture Sensor](Figures/capacitive-sensor.png)
+  
 To perform the collection, processing, and storage (per hour) of information, the chosen embedded system was the **Raspberry Pi 4 Model B**. The Raspbian operating system (Linux-based) was chosen and installed on the device.
+
 ![Raspberry Pi 4 Model B](Figures/raspberrypi4b.png)
 
 It is important to note that one of the sensors used, specifically the one that measures soil moisture, produces an analog output signal. However, the Raspberry does not have analog ports. Thus, the **MCP3008** was used, which is an 8-channel A/D converter. It has a 10-bit resolution and uses the SPI protocol to communicate with the microcomputer.
+
 ![MCP3008](Figures/MCP3008.png)
 
 ![Wiring schematic of the sensors](Figures/schematic.png)
