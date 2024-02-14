@@ -110,5 +110,5 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 
 If you have any questions or suggestions about the project, please feel free to reach out:
 
-- **LinkedIn**: [My LinkedIn Profile]([https://www.linkedin.com/in/your-profile/](https://www.linkedin.com/in/andreza-nascimento-ce/))
+- **LinkedIn**: [My LinkedIn Profile](https://www.linkedin.com/in/andreza-nascimento-ce/)
 - **Email**: `andrezacosta@alu.ufc.br`
