@@ -34,11 +34,11 @@ Development of an IoT-based crop management tool enabling efficient remote plant
 | RNF2 | Ease of Use                 | The visualization of the greenhouse state should be concise.                                                |
 | RNF3 | Robustness                  | In case of failure, the system should be able to restart itself and correct errors, or halt operations and alert the user if it cannot. |
 
-### System Architecture Description
+### System Architecture Description 📏
 
 ![System Architecture](Figures/architecture.png)
 
-## Materials
+## Materials 🧰
 
 For the project in question, two sensors were used: **DHT11** and a **Capacitive Soil Moisture Sensor Module**.
 
@@ -92,7 +92,7 @@ client.publish('v1/username/things/clientID/data/channel', variable_name)
 ```
 ![Creation of the widget for the dashboard](Figures/widget-dashboard.png)
 
-## Results
+## Results 📊
 
 ![Sensor reading via Cayenne](Figures/r1.png)
 
